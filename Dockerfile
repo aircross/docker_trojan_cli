@@ -34,11 +34,11 @@ RUN set -x && \
 	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	echo $VER
 RUN set -x && \
-	wget --no-check-certificate https://github.com/trojan-gfw/trojan/releases/download/${VER}/trojan-${VER}-linux-amd64.tar.xz
+	wget --no-check-certificate https://github.com/trojan-gfw/trojan/releases/download/${DEF_VERSION}/trojan-${DEF_VERSION}-linux-amd64.tar.xz
 RUN set -x && \
-	tar -xf trojan-${VER}-linux-amd64.tar.xz
+	tar -xf trojan-${DEF_VERSION}-linux-amd64.tar.xz
 RUN set -x && \
-	cd trojan-${VER}-linux-amd64
+	cd trojan-${DEF_VERSION}-linux-amd64
 RUN set -x && \
 	mv trojan ${WORKDIR}/${RUN_PATH}/
 RUN set -x && \
