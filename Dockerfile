@@ -11,7 +11,7 @@ MAINTAINER John <admin@vps.la>
 # 默认版本
 # 当前只支持
 ENV DEF_VERSION 1.16.0
-WORKDIR /trojan-cli
+WORKDIR /
 
 # 添加时区，并设置为上海
 RUN set -xe && \
@@ -25,14 +25,17 @@ RUN set -xe && \
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
 RUN set -x && \
-	mkdir ${WORKDIR} && \
-	cd ${WORKDIR} && \
+	mkdir /trojan-cli && \
+	cd /trojan-cli && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
 	echo $VER >> ${WORKDIR}/setup.log && \
 	echo $URL >> ${WORKDIR}/setup.log && \
 	wget --no-check-certificate ${URL} && \
 	tar -xf trojan-${VER}-linux-amd64.tar && \
+	cd trojan-${VER}-linux-amd64 && \
+	mv trojan /trojan-cli/ && \
+	mv config.json /trojan-cli/
 
 
 VOLUME $WORKDIR
