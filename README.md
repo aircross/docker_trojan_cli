@@ -23,11 +23,11 @@ docker run -itd --network=host \
 3.1 在Docker宿主机器执行修改配置文件命令
 ```shell
 nano /trojan-cli/config.json
-```
-3.2 将文件中的trojan_server修改为自己的Trojan服务器地址
-3.3 将文件中的443修改为自己的Trojan服务器端口，如果是443则忽略
-3.4 将文件中的trojan_pwd修改为自己的Trojan连接密码
-3.5 将文件中的1080修改为自己的Sock5服务端口，也可以保留默认
+``` 
+3.2 将文件中的trojan_server修改为自己的Trojan服务器地址 
+3.3 将文件中的443修改为自己的Trojan服务器端口，如果是443则忽略 
+3.4 将文件中的trojan_pwd修改为自己的Trojan连接密码 
+3.5 将文件中的1080修改为自己的Sock5服务端口，也可以保留默认 
 
 4. Build 自己的镜像
 ```shell
