@@ -26,7 +26,7 @@ RUN set -xe && \
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
 RUN set -x && \
-	mkdir /trojan-cli && \
+	mkdir ${WORKDIR}/${RUN_PATH} && \
 	cd ${WORKDIR}/${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	VER_NUM=${VER:1} && \
