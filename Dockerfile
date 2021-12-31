@@ -35,14 +35,8 @@ RUN set -x && \
 	echo "在线获取的======================" && \
 	echo $VER >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log && \
-	echo $VER
-# 错误的
-# https://github.com/trojan-gfw/trojan/releases/download/1.16.0/trojan-1.16.0-linux-amd64.tar.xz
-# 在线复制的
-# https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
-RUN set -x && \
-	echo $URL && \
-	(wget --no-check-certificate $URL)
+	echo $VER && \
+	wget --no-check-certificate $URL
 RUN set -x && \
 	tar -xf trojan-${VER}-linux-amd64.tar.xz
 RUN set -x && \
@@ -56,3 +50,7 @@ RUN set -x && \
 VOLUME ${WORKDIR}/${RUN_PATH}
 
 CMD ${WORKDIR}/${RUN_PATH}/trojan -c config.json
+# 错误的
+# https://github.com/trojan-gfw/trojan/releases/download/1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+# 在线复制的
+# https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
