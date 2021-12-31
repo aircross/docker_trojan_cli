@@ -26,17 +26,13 @@ RUN set -xe && \
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
 RUN set -x && \
-	mkdir /trojan-cli
-RUN set -x && \
-	cd ${WORKDIR}/${RUN_PATH}
-RUN set -x && \
-	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4)
-RUN set -x && \
-	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \")
-RUN set -x && \
-	echo $VER >> ${WORKDIR}/${RUN_PATH}/setup.log
-RUN set -x && \
-	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log
+	mkdir /trojan-cli && \
+	cd ${WORKDIR}/${RUN_PATH} && \
+	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
+	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
+	echo $VER >> ${WORKDIR}/${RUN_PATH}/setup.log && \
+	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log && \
+	echo $VER
 RUN set -x && \
 	wget --no-check-certificate https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-${VER}-linux-amd64.tar.xz
 RUN set -x && \
