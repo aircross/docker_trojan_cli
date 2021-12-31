@@ -43,7 +43,7 @@ RUN set -x && \
 	wget --no-check-certificate $URL && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
-	cd trojan && \
+	# cd trojan && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/ && \
 	mv trojan/config.json ${WORKDIR}/${RUN_PATH}/ && \
 	rm -rf trojan && \
