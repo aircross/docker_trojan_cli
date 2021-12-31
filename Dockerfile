@@ -33,9 +33,11 @@ RUN set -x && \
 	wget --no-check-certificate $URL && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
-	# cd trojan && \
+	cd ${WORKDIR}/${RUN_PATH}/ && \
+	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
+	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
-	mv trojan/config.json ${WORKDIR}/${RUN_PATH}/config.json && \
+	# mv trojan/config.json ${WORKDIR}/${RUN_PATH}/config.json && \
 	rm -rf trojan && \
 	rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
