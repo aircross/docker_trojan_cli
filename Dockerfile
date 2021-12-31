@@ -31,7 +31,7 @@ RUN set -x && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
 	echo $VER >> ${WORKDIR}/setup.log && \
 	echo $URL >> ${WORKDIR}/setup.log && \
-	wget --no-check-certificate ${URL}
+	wget --no-check-certificate ${URL} && \
 	tar -xf trojan-${VER}-linux-amd64.tar && \
 
 
