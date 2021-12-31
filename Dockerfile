@@ -47,8 +47,7 @@ RUN set -x && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
 	mv trojan/config.json ${WORKDIR}/${RUN_PATH}/config.json && \
 	rm -rf trojan && \
-	rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz && \
-
+	rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
 VOLUME ${WORKDIR}/${RUN_PATH}/
 
