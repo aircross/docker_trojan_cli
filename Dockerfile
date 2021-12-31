@@ -11,6 +11,8 @@ LABEL org.opencontainers.image.authors="John <admin@vps.la>" version="0.01"
 # 当前只支持
 ENV DEF_VERSION 1.16.0
 ENV RUN_PATH trojan-cli
+# 默认SOCK端口
+ENV SP 1080
 WORKDIR /
 
 # 添加时区，并设置为上海
@@ -35,6 +37,7 @@ RUN set -x && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
 	cd ${WORKDIR}/${RUN_PATH}/ && \
 	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
+	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
 	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
 	# mv trojan/config.json ${WORKDIR}/${RUN_PATH}/config.json && \
@@ -42,8 +45,11 @@ RUN set -x && \
 	rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
 VOLUME ${WORKDIR}/${RUN_PATH}/
+ENTRYPOINT ["./start.sh $SERVER $PASSWORD $SP"]
 
-CMD ${WORKDIR}/${RUN_PATH}/trojan -c config.json
+
+# CMD ${WORKDIR}/${RUN_PATH}/trojan -c config.json
+
 # 错误的
 # https://github.com/trojan-gfw/trojan/releases/download/1.16.0/trojan-1.16.0-linux-amd64.tar.xz
 # 在线复制的

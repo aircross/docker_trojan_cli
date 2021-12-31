@@ -14,6 +14,9 @@ curl -fsSL https://get.docker.com | sh
 ```shell
 mkdir /opt/trojan-cli && cd /opt/trojan-cli
 docker run -itd --network=host \
+    -e SP=1080 \
+    -e SERVER=your_trojan_server.com \
+    -e PASSWORD=your_trojan_password \
     -v /opt/trojan-cli:/trojan-cli/ \
     --name trojan-cli --restart=alway \
     aircross/docker_trojan_cli:latest
