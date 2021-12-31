@@ -36,8 +36,8 @@ RUN set -x && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
-	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
-	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
+	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
+	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
 	mv config.json ${WORKDIR}/${RUN_PATH}/config.json && \
 	mv init.sh ${WORKDIR}/${RUN_PATH}/init.sh && \
 	chmod +x ${WORKDIR}/${RUN_PATH}/init.sh && \
