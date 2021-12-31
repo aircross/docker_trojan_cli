@@ -36,14 +36,10 @@ RUN set -x && \
 	echo $VER >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	echo $VER && \
-	wget --no-check-certificate $URL
-RUN set -x && \
-	tar -xf trojan-${VER}-linux-amd64.tar.xz
-RUN set -x && \
-	cd trojan-${VER}-linux-amd64
-RUN set -x && \
-	mv trojan ${WORKDIR}/${RUN_PATH}/
-RUN set -x && \
+	wget --no-check-certificate $URL && \
+	tar -xf trojan-${VER}-linux-amd64.tar.xz && \
+	cd trojan-${VER}-linux-amd64 && \
+	mv trojan ${WORKDIR}/${RUN_PATH}/ && \
 	mv config.json ${WORKDIR}/${RUN_PATH}/
 
 
