@@ -32,8 +32,7 @@ RUN set -x && \
 	echo $VER >> ${WORKDIR}/setup.log && \
 	echo $URL >> ${WORKDIR}/setup.log && \
 	wget --no-check-certificate ${URL}
-	xz -d trojan-${VER}-linux-amd64.tar.xz && \
-	tar -xvf trojan-${VER}-linux-amd64.tar && \
+	tar -xf trojan-${VER}-linux-amd64.tar && \
 
 
 VOLUME $WORKDIR
