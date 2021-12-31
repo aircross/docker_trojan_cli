@@ -29,7 +29,7 @@ RUN set -x && \
 	mkdir /trojan-cli && \
 	cd ${WORKDIR}/${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
-	VER_NUM=${${VER}:1} && \
+	VER_NUM=${VER:1} && \
 	echo "数字版本号" && \
 	echo $VER_NUM && \
 	echo "数字版本号" && \
