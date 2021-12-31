@@ -35,3 +35,8 @@ RUN set -x && \
 	wget --no-check-certificate ${URL}
 	xz -d trojan-${VER}-linux-amd64.tar.xz && \
 	tar -xvf trojan-${VER}-linux-amd64.tar && \
+
+
+VOLUME $WORKDIR
+
+CMD ${WORKDIR}/trojan -c config.json
