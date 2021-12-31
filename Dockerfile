@@ -3,7 +3,7 @@
 # 安装最新版
 FROM alpine:latest
 # 安装curl
-RUN apk add --update curl jq && rm -rf /var/cache/apk/*
+RUN apk add --update wget curl jq && rm -rf /var/cache/apk/*
 MAINTAINER John <admin@vps.la>
 
 
