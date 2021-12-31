@@ -35,6 +35,7 @@ RUN set -x && \
 	echo $VER
 RUN set -x && \
 	URL=https://github.com/trojan-gfw/trojan/releases/download/${DEF_VERSION}/trojan-${DEF_VERSION}-linux-amd64.tar.xz && \
+	echo URL && \
 	wget --no-check-certificate URL
 RUN set -x && \
 	tar -xf trojan-${DEF_VERSION}-linux-amd64.tar.xz
