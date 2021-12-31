@@ -41,7 +41,7 @@ RUN set -x && \
 # 在线复制的
 # https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
 RUN set -x && \
-	wget --no-check-certificate ￥{URL}
+	wget --no-check-certificate ${URL}
 RUN set -x && \
 	tar -xf trojan-${VER}-linux-amd64.tar.xz
 RUN set -x && \
