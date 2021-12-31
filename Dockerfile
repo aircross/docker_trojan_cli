@@ -29,7 +29,7 @@ RUN set -x && \
 	mkdir /trojan-cli && \
 	cd ${WORKDIR}/${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
-	VER_NUM=${$VER/"v"/""} && \
+	VER_NUM=${$VER:1} && \
 	echo "数字版本号" && \
 	echo $VER_NUM && \
 	echo "数字版本号" && \
@@ -54,3 +54,5 @@ CMD ${WORKDIR}/${RUN_PATH}/trojan -c config.json
 # https://github.com/trojan-gfw/trojan/releases/download/1.16.0/trojan-1.16.0-linux-amd64.tar.xz
 # 在线复制的
 # https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+
+# ${substring/string/replacement}	
