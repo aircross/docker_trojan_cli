@@ -33,7 +33,7 @@ RUN set -x && \
 	echo $VER >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	wget --no-check-certificate ${URL} && \
-	tar -xf trojan-${VER}-linux-amd64.tar && \
+	tar -xf trojan-${VER}-linux-amd64.tar.xz && \
 	cd trojan-${VER}-linux-amd64 && \
 	mv trojan ${WORKDIR}/${RUN_PATH}/ && \
 	mv config.json ${WORKDIR}/${RUN_PATH}/
