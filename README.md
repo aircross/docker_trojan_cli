@@ -1,3 +1,11 @@
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![Docker Pulls][docker-pulls-shield]][docker-pulls-url]
+
 # Docker版的Trojan客户端
 
 目的在于搭建Docker版的Trojan客户端，可以方便地运行在群辉之类的Docker容器中

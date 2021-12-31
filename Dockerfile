@@ -6,8 +6,6 @@ FROM alpine:latest
 RUN apk add --update wget curl jq && rm -rf /var/cache/apk/*
 LABEL org.opencontainers.image.authors="John <admin@vps.la>" version="0.01"
 
-
-
 # 说明：本Docker是Linux版本的Trojan客户端
 # 默认版本
 # 当前只支持
