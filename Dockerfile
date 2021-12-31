@@ -45,7 +45,7 @@ RUN set -x && \
 	rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
 VOLUME ${WORKDIR}/${RUN_PATH}/
-ENTRYPOINT ["$WORKDIR/$RUN_PATH/init.sh $SERVER $PASSWORD $SP"]
+ENTRYPOINT ["${WORKDIR}/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
 
 
 # CMD ${WORKDIR}/${RUN_PATH}/trojan -c config.json
