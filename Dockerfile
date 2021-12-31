@@ -26,6 +26,7 @@ RUN set -xe && \
 # 下载执行文件
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
+
 RUN set -x && \
 	mkdir ${WORKDIR}/${RUN_PATH} && \
 	cd ${WORKDIR}/${RUN_PATH} && \
@@ -35,6 +36,8 @@ RUN set -x && \
 	wget --no-check-certificate $URL && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
+	echo "lj输出目录：${WORKDIR}/${RUN_PATH}/" && \
+	ls ${WORKDIR}/${RUN_PATH}/ && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
 	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
 	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
@@ -49,6 +52,7 @@ RUN set -x && \
 	# rm -rf trojan && \
 	# rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
+COPY config.json ${WORKDIR}/${RUN_PATH}/config.json
 VOLUME ${WORKDIR}/${RUN_PATH}/
 # ENTRYPOINT ["${WORKDIR}/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
 
