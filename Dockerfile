@@ -30,12 +30,19 @@ RUN set -x && \
 	cd ${WORKDIR}/${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
+	echo "在线获取的======================" && \
+	echo $URL && \
+	echo "在线获取的======================" && \
 	echo $VER >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log && \
 	echo $VER
+# 错误的
+# https://github.com/trojan-gfw/trojan/releases/download/1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+# 在线复制的
+# https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
 RUN set -x && \
-	URL=https://github.com/trojan-gfw/trojan/releases/download/${DEF_VERSION}/trojan-${DEF_VERSION}-linux-amd64.tar.xz && \
-	echo URL && \
+	URL=https://github.com/trojan-gfw/trojan/releases/download/v${DEF_VERSION}/trojan-${DEF_VERSION}-linux-amd64.tar.xz && \
+	echo $URL && \
 	wget --no-check-certificate URL
 RUN set -x && \
 	tar -xf trojan-${DEF_VERSION}-linux-amd64.tar.xz
