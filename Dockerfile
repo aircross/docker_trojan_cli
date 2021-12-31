@@ -7,11 +7,10 @@ RUN apk add --update curl jq && rm -rf /var/cache/apk/*
 MAINTAINER John <admin@vps.la>
 
 
-
 # 说明：本Docker是Linux版本的Trojan客户端
 # 默认版本
 # 当前只支持
-ENV DEF_VERSION 0.38.0
+ENV DEF_VERSION 1.16.0
 WORKDIR /trojan-cli
 
 # 添加时区，并设置为上海
