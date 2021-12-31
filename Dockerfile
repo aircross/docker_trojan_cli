@@ -29,16 +29,7 @@ RUN set -x && \
 	cd ${WORKDIR}/${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	VER_NUM=${VER:1} && \
-	echo "数字版本号" && \
-	echo $VER_NUM && \
-	echo "数字版本号" && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
-	echo "在线获取的======================" && \
-	echo $URL && \
-	echo "在线获取的======================" && \
-	echo $VER >> ${WORKDIR}/${RUN_PATH}/setup.log && \
-	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log && \
-	echo $VER && \
 	wget --no-check-certificate $URL && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
