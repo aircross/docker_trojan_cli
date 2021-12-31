@@ -39,7 +39,7 @@ RUN set -x && \
 	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
 	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
 	chmod +x ${WORKDIR}/${RUN_PATH}/init.sh && \
-	chmod +x ${WORKDIR}/${RUN_PATH}/trojan && \
+	chmod +x ${WORKDIR}/${RUN_PATH}/trojan
 	# cat config.json && \
 	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd && \
 	# ls && \
