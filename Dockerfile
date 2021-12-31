@@ -36,8 +36,8 @@ RUN set -x && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
 	wget --no-check-certificate $URL && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
-	echo "ls输出目录：${WORKDIR}/${RUN_PATH}/" && \
-	ls ${WORKDIR}/${RUN_PATH}/ && \
+	echo "ls输出当前目录：" && \
+	ls ./ && \
 	pwd && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
 	echo "ls输出目录：${WORKDIR}/${RUN_PATH}/" && \
@@ -46,8 +46,17 @@ RUN set -x && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
 	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
 	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
+	echo "ls输出当前目录(下载后)：" && \
+	ls ./ && \
+	pwd && \
 	mv config.json ${WORKDIR}/${RUN_PATH}/config.json && \
 	mv init.sh ${WORKDIR}/${RUN_PATH}/init.sh && \
+	echo "ls输出当前目录（移动后）：" && \
+	ls ./ && \
+	pwd && \
+	echo "ls输出目录：${WORKDIR}/${RUN_PATH}/" && \
+	ls ${WORKDIR}/${RUN_PATH}/ && \
+	pwd && \
 	chmod +x ${WORKDIR}/${RUN_PATH}/init.sh && \
 	chmod +x ${WORKDIR}/${RUN_PATH}/trojan
 	# cat config.json && \
