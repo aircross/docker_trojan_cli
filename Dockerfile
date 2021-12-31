@@ -29,6 +29,10 @@ RUN set -x && \
 	mkdir /trojan-cli && \
 	cd ${WORKDIR}/${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
+	VER_NUM=$VER|cut -d 'v' -f 1 && \
+	echo "数字版本号" && \
+	echo $Ver_NUM && \
+	echo "数字版本号" && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
 	echo "在线获取的======================" && \
 	echo $URL && \
