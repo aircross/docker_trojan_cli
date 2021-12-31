@@ -39,6 +39,7 @@ RUN set -x && \
 	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
 	wget https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
 	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd && \
+	ls && \
 	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
 	# mv trojan/config.json ${WORKDIR}/${RUN_PATH}/config.json && \
 	rm -rf trojan && \
