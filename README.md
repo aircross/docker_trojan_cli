@@ -5,7 +5,7 @@
 # 功能介绍
 
 ## 服用方法
-此 docker 教程与 docker 镜像由https://vps.la提供
+此 docker 教程与 docker 镜像由[https://vps.la](https://vps.la)提供
 1. 安装docker
 ```shell
 curl -fsSL https://get.docker.com | sh
@@ -18,19 +18,19 @@ docker run -itd --network=host \
     -e SERVER=your_trojan_server.com \
     -e PASSWORD=your_trojan_password \
     -v /opt/trojan-cli:/trojan-cli/ \
-    --name trojan-cli --restart=alway \
+    --name trojan-cli --restart=always \
     aircross/docker_trojan_cli:latest
 ```
 
 3. 修改配置文件
-3.1 在Docker宿主机器执行修改配置文件命令
+- 3.1 在Docker宿主机器执行修改配置文件命令
 ```shell
 nano /trojan-cli/config.json
 ``` 
-3.2 将文件中的trojan_server修改为自己的Trojan服务器地址 
-3.3 将文件中的443修改为自己的Trojan服务器端口，如果是443则忽略 
-3.4 将文件中的trojan_pwd修改为自己的Trojan连接密码 
-3.5 将文件中的1080修改为自己的Sock5服务端口，也可以保留默认 
+- 3.2 将文件中的trojan_server修改为自己的Trojan服务器地址 
+- 3.3 将文件中的443修改为自己的Trojan服务器端口，如果是443则忽略 
+- 3.4 将文件中的trojan_pwd修改为自己的Trojan连接密码 
+- 3.5 将文件中的1080修改为自己的Sock5服务端口，也可以保留默认 
 
 4. Build 自己的镜像
 ```shell
