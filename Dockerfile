@@ -38,7 +38,7 @@ RUN set -x && \
 RUN set -x && \
 	echo $URL >> ${WORKDIR}/${RUN_PATH}/setup.log
 RUN set -x && \
-	wget --no-check-certificate ${URL}
+	wget --no-check-certificate https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-${VER}-linux-amd64.tar.xz
 RUN set -x && \
 	tar -xf trojan-${VER}-linux-amd64.tar.xz
 RUN set -x && \
