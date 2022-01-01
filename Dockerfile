@@ -19,7 +19,7 @@ RUN apt-get update
 RUN apt-get install gcc -y
 RUN apt-get install g++ -y
 RUN apt-get install make -y
-RUN apt-get install wget curl jq -y
+RUN apt-get install wget curl jq xz-utils -y
 
 # 暴露80端口
 EXPOSE $SP
