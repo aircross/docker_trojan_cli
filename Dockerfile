@@ -49,6 +49,10 @@ RUN set -x && \
 	echo "ls输出当前目录(下载后)：" && \
 	ls ./ && \
 	pwd && \
+    mv /trojan-cli/config.json /trojan-cli/config.json.sample && \
+    mv /config.json /trojan-cli/config.json && \
+    mv /init.sh /trojan-cli/init.sh && \
+    chmod +x /trojan-cli/init.sh && \
 	# mv config.json /${RUN_PATH}/config.json && \
 	# mv init.sh /${RUN_PATH}/init.sh && \
 	echo "ls输出当前目录（移动后）：" && \
@@ -68,7 +72,7 @@ RUN set -x && \
 
 # VOLUME ${RUN_PATH}/
 # COPY config.json ${RUN_PATH}/config.json
-# ENTRYPOINT ["/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
+ENTRYPOINT ["/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
 
 # ENTRYPOINT ${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}
 
