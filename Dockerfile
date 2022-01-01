@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.authors="John <admin@vps.la>" version="0.01"
 # 默认版本
 # 当前只支持
 ENV DEF_VERSION 1.16.0
-ENV RUN_PATH trojan-cli
+ENV RUN_PATH /trojan-cli
 # 默认SOCK端口
 ENV SP 1080
 WORKDIR /
@@ -26,11 +26,11 @@ RUN set -xe && \
 # 下载执行文件
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
-# VOLUME ${WORKDIR}/${RUN_PATH}/
+VOLUME ${RUN_PATH}/
 
 RUN set -x && \
-	mkdir ${WORKDIR}/${RUN_PATH} && \
-	# cd ${WORKDIR}/${RUN_PATH} && \
+	mkdir ${RUN_PATH} && \
+	# cd ${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	VER_NUM=${VER:1} && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
@@ -39,9 +39,9 @@ RUN set -x && \
 	echo "ls输出当前目录：" && \
 	ls ./ && \
 	pwd && \
-	mv trojan/trojan ${WORKDIR}/${RUN_PATH}/trojan && \
-	echo "ls输出目录：${WORKDIR}/${RUN_PATH}/" && \
-	ls ${WORKDIR}/${RUN_PATH}/ && \
+	mv trojan/trojan ${RUN_PATH}/trojan && \
+	echo "ls输出目录：${RUN_PATH}/" && \
+	ls ${RUN_PATH}/ && \
 	pwd && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
 	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
@@ -49,30 +49,30 @@ RUN set -x && \
 	echo "ls输出当前目录(下载后)：" && \
 	ls ./ && \
 	pwd && \
-	mv config.json ${WORKDIR}/${RUN_PATH}/config.json && \
-	mv init.sh ${WORKDIR}/${RUN_PATH}/init.sh && \
+	mv config.json ${RUN_PATH}/config.json && \
+	mv init.sh ${RUN_PATH}/init.sh && \
 	echo "ls输出当前目录（移动后）：" && \
 	ls ./ && \
 	pwd && \
-	echo "ls输出目录：${WORKDIR}/${RUN_PATH}/" && \
-	ls ${WORKDIR}/${RUN_PATH}/ && \
+	echo "ls输出目录：${RUN_PATH}/" && \
+	ls ${RUN_PATH}/ && \
 	pwd && \
-	chmod +x ${WORKDIR}/${RUN_PATH}/init.sh && \
-	chmod +x ${WORKDIR}/${RUN_PATH}/trojan
+	chmod +x ${RUN_PATH}/init.sh && \
+	chmod +x ${RUN_PATH}/trojan
 	# cat config.json && \
 	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd && \
 	# ls && \
-	# mv trojan/config.json ${WORKDIR}/${RUN_PATH}/config.json && \
+	# mv trojan/config.json ${RUN_PATH}/config.json && \
 	# rm -rf trojan && \
 	# rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
-# COPY config.json ${WORKDIR}/${RUN_PATH}/config.json
-# ENTRYPOINT ["${WORKDIR}/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
+# COPY config.json ${RUN_PATH}/config.json
+# ENTRYPOINT ["${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
 
-# ENTRYPOINT ${WORKDIR}/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}
+# ENTRYPOINT ${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}
 
 
-# CMD ${WORKDIR}/${RUN_PATH}/trojan -c config.json
+# CMD ${RUN_PATH}/trojan -c config.json
 
 # 错误的
 # https://github.com/trojan-gfw/trojan/releases/download/1.16.0/trojan-1.16.0-linux-amd64.tar.xz
