@@ -37,7 +37,7 @@ RUN set -x && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	mv trojan ${RUN_PATH} && \
 	echo "ls输出当前目录：" && \
-	ls ./ && \
+	ls ${RUN_PATH} && \
 	pwd && \
 	# mv trojan/trojan ${RUN_PATH}/trojan && \
 	echo "ls输出目录：${RUN_PATH}/" && \
