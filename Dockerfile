@@ -49,16 +49,16 @@ RUN set -x && \
 	echo "ls输出当前目录(下载后)：" && \
 	ls ./ && \
 	pwd && \
-	mv config.json /${RUN_PATH}/config.json && \
-	mv init.sh /${RUN_PATH}/init.sh && \
+	# mv config.json /${RUN_PATH}/config.json && \
+	# mv init.sh /${RUN_PATH}/init.sh && \
 	echo "ls输出当前目录（移动后）：" && \
 	ls ./ && \
 	pwd && \
 	echo "ls输出目录：${RUN_PATH}/" && \
 	ls ${RUN_PATH} && \
 	pwd && \
-	chmod +x /${RUN_PATH}/init.sh && \
-	chmod +x /${RUN_PATH}/trojan
+	# chmod +x /${RUN_PATH}/init.sh && \
+	# chmod +x /${RUN_PATH}/trojan
 	# cat config.json && \
 	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd && \
 	# ls && \
@@ -68,7 +68,7 @@ RUN set -x && \
 
 # VOLUME ${RUN_PATH}/
 # COPY config.json ${RUN_PATH}/config.json
-ENTRYPOINT ["${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
+ENTRYPOINT ["/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
 
 # ENTRYPOINT ${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}
 
