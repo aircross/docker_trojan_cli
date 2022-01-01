@@ -9,11 +9,11 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
         echo "如果第一个参数为:redis-server"
     fi
     # $SERVER $PASSWORD $SP
-    sed -i "s/trojan_server/$1/g;s/trojan_pwd/$2/g;s/1080/$3/" /trojan-cli/config.json
+    sed -i "s/trojan_server/$1/g;s/trojan_pwd/$2/g;s/trojan_prot,/$3/" /trojan-cli/config.json
     pwd
     ls ./
     ls /trojan-cli
-    /trojan-cli/trojan -c /trojan-cli/config.json
+    /bin/sh /trojan-cli/trojan -c /trojan-cli/config.json
 else
     echo "-- Not first container startup --"
     # 直接执行trojan -c config.json
@@ -21,5 +21,5 @@ else
     pwd
     ls ./
     ls /trojan-cli
-    /trojan-cli/trojan -c /trojan-cli/config.json
+    /bin/sh /trojan-cli/trojan -c /trojan-cli/config.json
 fi
