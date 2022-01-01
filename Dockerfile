@@ -81,7 +81,7 @@ RUN set -x && \
 # ENTRYPOINT  ["/bin/sh", "/init.sh", "echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
 # ENTRYPOINT  ["/bin/sh", "/init.sh", "${SERVER}", "${PASSWORD}", "${SP}"]
-ENTRYPOINT  /init.sh $SERVER $PASSWORD $SP
+ENTRYPOINT  /bin/sh /init.sh $SERVER $PASSWORD $SP
 # CMD  ["echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
 # CMD ${RUN_PATH}/trojan -c config.json
