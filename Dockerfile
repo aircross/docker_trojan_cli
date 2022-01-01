@@ -15,6 +15,14 @@ ENV RUN_PATH trojan-cli
 ENV SP 1080
 WORKDIR /
 
+# 配置GLIBC库，否则无法运行
+ARG ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0"
+ARG ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" \
+    ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-${ALPINE_GLIBC_PACKAGE_VERSION}.apk" \
+    ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-${ALPINE_GLIBC_PACKAGE_VERSION}.apk" \
+    ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-${ALPINE_GLIBC_PACKAGE_VERSION}.apk"
+
+
 # 添加时区，并设置为上海
 RUN set -xe && \
     apk add tzdata && \

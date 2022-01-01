@@ -13,9 +13,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     pwd
     ls ./
     ls /trojan-cli
-    cd /trojan-cli
-    ls
-    ./trojan -c /trojan-cli/config.json
+    /trojan-cli/trojan -c /trojan-cli/config.json
 else
     echo "-- Not first container startup --"
     # 直接执行trojan -c config.json
@@ -23,7 +21,5 @@ else
     pwd
     ls ./
     ls /trojan-cli
-    cd /trojan-cli
-    ls
-    ./trojan -c /trojan-cli/config.json
+    /trojan-cli/trojan -c /trojan-cli/config.json
 fi
