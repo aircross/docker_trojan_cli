@@ -57,7 +57,7 @@ RUN set -x && \
 	# chmod +x /${RUN_PATH}/init.sh && \
 	# chmod +x /${RUN_PATH}/trojan
 	# cat config.json && \
-	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd && \
+	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd
 	# ls && \
 	# mv trojan/config.json ${RUN_PATH}/config.json && \
 	# rm -rf trojan && \
@@ -71,7 +71,7 @@ RUN set -x && \
 # ENTRYPOINT  ["/bin/sh", "/init.sh", "echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
 # ENTRYPOINT  ["/bin/sh", "/init.sh", "${SERVER}", "${PASSWORD}", "${SP}"]
-ENTRYPOINT  /init.sh $SERVER $PASSWORD $SP
+ENTRYPOINT  /bin/bash /init.sh $SERVER $PASSWORD $SP
 # CMD  ["echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
 # CMD ${RUN_PATH}/trojan -c config.json
