@@ -25,9 +25,6 @@ RUN apt-get install wget curl jq xz-utils -y
 EXPOSE $SP
 
 # 添加时区，并设置为上海
-# RUN set -xe && \
-#     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-#     timedatectl set-timezone Asia/Shanghai
 
 # 读取平台类型并保存到PLATFORM
 # 下载执行文件
