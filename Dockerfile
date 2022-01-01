@@ -26,11 +26,11 @@ RUN set -xe && \
 # 下载执行文件
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
-VOLUME ${WORKDIR}/${RUN_PATH}/
+# VOLUME ${WORKDIR}/${RUN_PATH}/
 
 RUN set -x && \
 	mkdir ${WORKDIR}/${RUN_PATH} && \
-	cd ${WORKDIR}/${RUN_PATH} && \
+	# cd ${WORKDIR}/${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	VER_NUM=${VER:1} && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
@@ -66,7 +66,7 @@ RUN set -x && \
 	# rm -rf trojan && \
 	# rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
-COPY config.json ${WORKDIR}/${RUN_PATH}/config.json
+# COPY config.json ${WORKDIR}/${RUN_PATH}/config.json
 # ENTRYPOINT ["${WORKDIR}/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
 
 # ENTRYPOINT ${WORKDIR}/${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}
