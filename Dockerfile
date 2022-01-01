@@ -94,5 +94,3 @@ ENTRYPOINT  /bin/bash /init.sh $SERVER $PASSWORD $SP
 # https://github.com/trojan-gfw/trojan/releases/download/1.16.0/trojan-1.16.0-linux-amd64.tar.xz
 # 在线复制的
 # https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
-
-# ${substring/string/replacement}	

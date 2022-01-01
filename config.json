@@ -3,7 +3,7 @@
     "local_addr": "0.0.0.0",
     "local_port": 1080,
     "remote_addr": "trojan_server",
-    "remote_port": trojan_prot,
+    "remote_port": 443,
     "password": [
         "trojan_pwd"
     ],
