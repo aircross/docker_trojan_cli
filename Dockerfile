@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.authors="John <admin@vps.la>" version="0.01"
 # 默认版本
 # 当前只支持
 ENV DEF_VERSION 1.16.0
-ENV RUN_PATH /trojan-cli
+ENV RUN_PATH "/trojan-cli/"
 # 默认SOCK端口
 ENV SP 1080
 WORKDIR /
