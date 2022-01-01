@@ -12,9 +12,9 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     echo $2
     echo $3
     # $SERVER $PASSWORD $SP
-    sed -i '/\/trojan_server/s/trojan_server/$1/g' /trojan-cli/config.json
-    sed -i '/\/trojan_pwd/s/trojan_pwd/$2/g' /trojan-cli/config.json
-    sed -i '/\/1080/s/1080/$3/g' /trojan-cli/config.json
+    sed "s/trojan_server/$1/" /opt/trojan-cli/config.json
+    sed "s/trojan_pwd/$2/" /opt/trojan-cli/config.json
+    sed "s/1080/$3/" /opt/trojan-cli/config.json
     /trojan-cli/trojan -c /trojan-cli/config.json
 else
     echo "-- Not first container startup --"

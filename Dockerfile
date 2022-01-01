@@ -62,7 +62,6 @@ RUN set -x && \
 	ls ${RUN_PATH} && \
 	pwd
 	
-	
 	# chmod +x /${RUN_PATH}/init.sh && \
 	# chmod +x /${RUN_PATH}/trojan
 	# cat config.json && \
