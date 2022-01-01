@@ -26,7 +26,6 @@ RUN set -xe && \
 # 下载执行文件
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
-
 RUN set -x && \
 	# mkdir ${RUN_PATH} && \
 	# cd ${RUN_PATH} && \
