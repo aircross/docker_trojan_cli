@@ -1,8 +1,9 @@
 # 3.8版
 #FROM alpine:3.8
-# 安装最新版
-FROM ubuntu:20.04
+# 安装最新版，会无法执行文件
+FROM alpine:latest
 # 安装curl
+RUN apk add --update wget curl jq && rm -rf /var/cache/apk/*
 LABEL org.opencontainers.image.authors="John <admin@vps.la>" version="0.01"
 
 # 说明：本Docker是Linux版本的Trojan客户端
@@ -14,15 +15,6 @@ ENV RUN_PATH trojan-cli
 ENV SP 1080
 WORKDIR /
 
-# 安装编译器
-RUN apt-get update
-RUN apt-get install gcc -y
-RUN apt-get install g++ -y
-RUN apt-get install make -y
-RUN apt-get install wget curl jq -y
-
-# 暴露80端口
-EXPOSE $SP
 # 配置GLIBC库，否则无法运行
 # ARG ALPINE_GLIBC_PACKAGE_VERSION="2.34-r0"
 # ARG ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download" \
@@ -33,8 +25,10 @@ EXPOSE $SP
 
 # 添加时区，并设置为上海
 RUN set -xe && \
+    apk add tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    timedatectl set-timezone Asia/Shanghai
+    echo "Asia/Shanghai" > /etc/timezone && \
+    apk del tzdata
 
 # 读取平台类型并保存到PLATFORM
 # 下载执行文件
@@ -43,6 +37,8 @@ RUN set -xe && \
 RUN set -x && \
 	# mkdir ${RUN_PATH} && \
 	# cd ${RUN_PATH} && \
+	wget --no-check-certificate https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.34-r0/glibc-2.34-r0.apk && \
+	apk add glibc-2.34-r0.apk && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	VER_NUM=${VER:1} && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
@@ -94,7 +90,7 @@ RUN set -x && \
 # ENTRYPOINT  ["/bin/sh", "/init.sh", "echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
 # ENTRYPOINT  ["/bin/sh", "/init.sh", "${SERVER}", "${PASSWORD}", "${SP}"]
-ENTRYPOINT  /bin/bash /init.sh $SERVER $PASSWORD $SP
+ENTRYPOINT  /bin/sh /init.sh $SERVER $PASSWORD $SP
 # CMD  ["echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
 # CMD ${RUN_PATH}/trojan -c config.json
