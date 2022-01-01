@@ -71,6 +71,7 @@ RUN set -x && \
 	# rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
 # VOLUME ${RUN_PATH}/
+
 # COPY config.json ${RUN_PATH}/config.json
 # ENTRYPOINT ["/$RUN_PATH/init.sh $SERVER $PASSWORD $SP"]
 
