@@ -8,6 +8,9 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     if [ "$3" = 'redis-server' -a "$(id -u)" = '0' ]; then
         echo "如果第一个参数为:redis-server"
     fi
+    echo $1
+    echo $2
+    echo $3
     # $SERVER $PASSWORD $SP
     sed "s/trojan_server/$1/" /trojan-cli/config.json
     sed "s/trojan_pwd/$2/" /trojan-cli/config.json
