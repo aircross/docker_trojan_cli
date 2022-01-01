@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.authors="John <admin@vps.la>" version="0.01"
 # 默认版本
 # 当前只支持
 ENV DEF_VERSION 1.16.0
-ENV RUN_PATH "/trojan-cli/"
+ENV RUN_PATH trojan-cli
 # 默认SOCK端口
 ENV SP 1080
 WORKDIR /
@@ -26,7 +26,6 @@ RUN set -xe && \
 # 下载执行文件
 # https://github.com/trojan-gfw/trojan/releases/download/v1.14.1/trojan-1.14.1-linux-amd64.tar.xz
 
-VOLUME ${RUN_PATH}/
 
 RUN set -x && \
 	mkdir ${RUN_PATH} && \
@@ -66,6 +65,7 @@ RUN set -x && \
 	# rm -rf trojan && \
 	# rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
 
+# VOLUME ${RUN_PATH}/
 # COPY config.json ${RUN_PATH}/config.json
 # ENTRYPOINT ["${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}"]
 
