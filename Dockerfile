@@ -36,7 +36,7 @@ RUN set -x && \
 	wget --no-check-certificate $URL && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	mv trojan ${RUN_PATH} && \
-	chmod +x ${RUN_PATH}/trojan
+	chmod +x ${RUN_PATH}/trojan && \
 	echo "ls输出当前目录：" && \
 	ls ${RUN_PATH} && \
 	pwd && \
