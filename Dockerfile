@@ -52,25 +52,7 @@ RUN set -x && \
     mv /trojan/config.json /trojan/config.json.sample && \
     mv /config.json /trojan/config.json && \
     # mv /init.sh /trojan-cli/init.sh && \
-    chmod +x /init.sh && \
-
-	# chmod +x /${RUN_PATH}/init.sh && \
-	# chmod +x /${RUN_PATH}/trojan
-	# cat config.json && \
-	# sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd
-	# ls && \
-	# mv trojan/config.json ${RUN_PATH}/config.json && \
-	# rm -rf trojan && \
-	# rm -rf trojan-${VER_NUM}-linux-amd64.tar.xz
-
-# VOLUME ${RUN_PATH}/
-
-# ENTRYPOINT ["/$RUN_PATH/init.sh $SERVER $PASSWORD $SP"]
-
-# ENTRYPOINT /${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP} tt
-# ENTRYPOINT  ["/bin/sh", "/init.sh", "echo $SERVER", "echo $PASSWORD", "echo $SP"]
-
-# ENTRYPOINT  ["/bin/sh", "/init.sh", "${SERVER}", "${PASSWORD}", "${SP}"]
+    chmod +x /init.sh
 ENTRYPOINT  /bin/bash /init.sh $SERVER $PASSWORD $SP
 # CMD  ["echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
