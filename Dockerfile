@@ -51,8 +51,8 @@ RUN set -x && \
 	pwd && \
     mv /trojan-cli/config.json /trojan-cli/config.json.sample && \
     mv /config.json /trojan-cli/config.json && \
-    mv /init.sh /trojan-cli/init.sh && \
-    chmod +x /trojan-cli/init.sh && \
+    # mv /init.sh /trojan-cli/init.sh && \
+    chmod +x /init.sh && \
 	# mv config.json /${RUN_PATH}/config.json && \
 	# mv init.sh /${RUN_PATH}/init.sh && \
 	echo "ls输出当前目录（移动后）：" && \
@@ -75,8 +75,8 @@ RUN set -x && \
 # ENTRYPOINT ["/$RUN_PATH/init.sh $SERVER $PASSWORD $SP"]
 
 # ENTRYPOINT /${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP} tt
-ENTRYPOINT  ["/$RUN_PATH/init.sh"]
-CMD  ["$SERVER", "$PASSWORD", "$SP"]
+ENTRYPOINT  ["/init.sh"]
+CMD  ["echo $SERVER", "echo $PASSWORD", "echo $SP"]
 
 # CMD ${RUN_PATH}/trojan -c config.json
 
