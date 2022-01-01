@@ -37,7 +37,8 @@ RUN set -xe && \
 RUN set -x && \
 	# mkdir ${RUN_PATH} && \
 	# cd ${RUN_PATH} && \
-	mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 && \
+	wget --no-check-certificate https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.34-r0/glibc-2.34-r0.apk && \
+	apk add glibc-2.34-r0.apk && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
 	VER_NUM=${VER:1} && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
