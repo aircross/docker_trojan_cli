@@ -16,7 +16,7 @@ jobs:
       - name: Set tag
         id: tag
         run: |
-          TAG=$(cat Dockerfile | awk 'NR==13 {print $3}')
+          TAG=$(cat Dockerfile | awk 'NR==11 {print $3}')
           echo "::set-env name=TAG::$TAG"
       - name: Docker Hub login
         env:
