@@ -49,7 +49,7 @@ RUN set -x && \
 	echo "ls输出当前目录(下载后)：" && \
 	ls ./ && \
 	pwd && \
-    mv /trojan/config.json /trojan-cli/config.json.sample && \
+    mv /trojan/config.json /trojan/config.json.sample && \
     mv /config.json /trojan/config.json && \
     # mv /init.sh /trojan-cli/init.sh && \
     chmod +x /init.sh && \
