@@ -42,13 +42,7 @@ RUN set -x && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
 	# mv trojan ${RUN_PATH} && \
 	chmod +x trojan/trojan && \
-	echo "ls输出当前目录：" && \
-	ls ${RUN_PATH} && \
-	pwd && \
 	# mv trojan/trojan ${RUN_PATH}/trojan && \
-	echo "ls输出目录：${RUN_PATH}/" && \
-	ls ${RUN_PATH} && \
-	pwd && \
 	# cd trojan-${VER_NUM}-linux-amd64 && \
 	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/config.json && \
 	wget --no-check-certificate https://raw.githubusercontent.com/aircross/docker_trojan_cli/master/init.sh && \
@@ -59,14 +53,6 @@ RUN set -x && \
     mv /config.json /trojan/config.json && \
     # mv /init.sh /trojan-cli/init.sh && \
     chmod +x /init.sh && \
-	# mv config.json /${RUN_PATH}/config.json && \
-	# mv init.sh /${RUN_PATH}/init.sh && \
-	echo "ls输出当前目录（移动后）：" && \
-	ls ./ && \
-	pwd && \
-	echo "ls输出目录：${RUN_PATH}/" && \
-	ls ${RUN_PATH} && \
-	pwd
 
 	# chmod +x /${RUN_PATH}/init.sh && \
 	# chmod +x /${RUN_PATH}/trojan
