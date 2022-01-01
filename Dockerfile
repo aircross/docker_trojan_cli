@@ -37,7 +37,9 @@ RUN set -x && \
 	# mkdir ${RUN_PATH} && \
 	# cd ${RUN_PATH} && \
 	VER=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/latest | grep tag_name | cut -d '"' -f 4) && \
-	VER_NUM=bash ${VER:1} && \
+	# VER_NUM=bash ${VER:1} && \
+	VER_NUM=$(echo $VER | awk  '{ string=substr($0,1,6); print string; }') && \
+	echo VER_NUM && \
 	URL=$(curl -s https://api.github.com/repos/trojan-gfw/trojan/releases/tags/${VER} | jq .assets[0].browser_download_url | tr -d \") && \
 	wget --no-check-certificate $URL && \
 	tar -xf trojan-${VER_NUM}-linux-amd64.tar.xz && \
