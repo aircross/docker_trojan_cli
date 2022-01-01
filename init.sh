@@ -13,5 +13,5 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
 else
     echo "-- Not first container startup --"
     # 直接执行trojan -c config.json
-    /trojan-cli/trojan -c /trojan-cli/config.json
+    # /trojan-cli/trojan -c /trojan-cli/config.json
 fi
