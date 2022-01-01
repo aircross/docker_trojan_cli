@@ -61,6 +61,8 @@ RUN set -x && \
 	echo "ls输出目录：${RUN_PATH}/" && \
 	ls ${RUN_PATH} && \
 	pwd
+	
+	
 	# chmod +x /${RUN_PATH}/init.sh && \
 	# chmod +x /${RUN_PATH}/trojan
 	# cat config.json && \
