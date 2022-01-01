@@ -74,7 +74,7 @@ RUN set -x && \
 # COPY config.json ${RUN_PATH}/config.json
 # ENTRYPOINT ["/$RUN_PATH/init.sh $SERVER $PASSWORD $SP"]
 
-ENTRYPOINT ${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}
+ENTRYPOINT /${RUN_PATH}/init.sh ${SERVER} ${PASSWORD} ${SP}
 
 
 # CMD ${RUN_PATH}/trojan -c config.json
